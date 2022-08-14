@@ -42,6 +42,23 @@ class CreateFileHelper {
         return $xml->asXML();
     }
 
+    public static function createJsonFile(string $jsonString, string $provider)
+    {
+        $provider = self::getProviderName($provider);
+        $jsonPath = dirname(__DIR__).'/Feeds/'.$provider.'/JSON';
+
+        if (!is_dir($jsonPath)) mkdir($jsonPath,0777,true);
+
+        $fileName = $provider.'-'.date('d-m-Y-H-i-s').'.json';
+
+        $file = fopen("$jsonPath/$fileName", 'w');
+        fwrite($file,$jsonString);
+        fclose($file);
+
+        echo 'JSON file is created... The file is here:'.PHP_EOL.$jsonPath.'/'.$fileName.PHP_EOL;
+
+    }
+
     private static function getProviderName($provider)
     {
         $provider = explode('\\', $provider);
