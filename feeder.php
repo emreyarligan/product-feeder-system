@@ -38,7 +38,7 @@ if (file_exists($fileName)) {
         $feeder->readData('products.json');
     
     } else {
-        die($argv[1].' provider does not exists...');
+        die($argv[1].' provider does not exists... The providers must be one of Cimri, Facebook and Google');
     }
 
 } else {

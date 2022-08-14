@@ -8,7 +8,7 @@ require dirname(__DIR__).'/helpers/CreateFileHelper.php';
 use Interfaces\DataFeederInterface;
 use Helpers\CreateFileHelper;
 
-class Provier implements DataFeederInterface
+class Google implements DataFeederInterface
 {
     private $jsonData;
     
@@ -20,6 +20,8 @@ class Provier implements DataFeederInterface
 
     public function createFile()
     {
+        // Google wants only XML file in our scenario...
+
         CreateFileHelper::createXMLFile(
             $this->jsonData,
             get_called_class()
